@@ -1,4 +1,6 @@
-require "procreate/swatches/version"
+# frozen_string_literal: true
+
+require 'procreate/swatches/version'
 
 module Procreate
   module Swatches
