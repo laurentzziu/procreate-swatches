@@ -19,4 +19,19 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  config.after(:suite) do
+    # remove `.swatches` files created by the test suite
+    dir = Dir.pwd
+    all_swatches = Dir[File.join(dir, '*.swatches')]
+    all_swatches.each do |file|
+      if File.exist?(file) && File.basename(file).match(/\Aspec/i).present?
+        File.delete(file)
+      end
+    end
+  end
+end
+
+def path_for_file(file_name)
+  File.expand_path("../support/#{file_name}", __FILE__)
 end

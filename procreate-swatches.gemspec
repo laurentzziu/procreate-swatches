@@ -24,10 +24,17 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
+  spec.add_dependency 'callable_class', '~> 0.1.1'
+  spec.add_dependency 'chroma'
+  spec.add_dependency 'rubyzip', '>= 1.0.0'
+
+  spec.add_development_dependency 'activesupport'
   spec.add_development_dependency 'bundler', '~> 2.0'
+  spec.add_development_dependency 'pry'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rubocop'
+  spec.add_development_dependency 'rubocop-performance'
   spec.add_development_dependency 'rubocop-rspec'
   spec.add_development_dependency 'simplecov'
   spec.add_development_dependency 'simplecov-console'
