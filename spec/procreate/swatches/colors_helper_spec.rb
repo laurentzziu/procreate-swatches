@@ -26,7 +26,7 @@ RSpec.describe Procreate::Swatches::ColorsHelper do
 
   context 'when testing #to_chroma_hsv' do
     it { expect(test_class).to respond_to(:to_chroma_hsv).with(1).argument }
-    it { expect(test_class.to_chroma_hsv(color_json.stringify_keys)).to eq("hsv(210, 17%, 80%)")}
+    it { expect(test_class.to_chroma_hsv(color_json.stringify_keys)).to eq('hsv(210, 17%, 80%)') }
   end
 
   context 'when testing #prepare_color_for_push' do

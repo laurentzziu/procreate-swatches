@@ -37,7 +37,7 @@ module Procreate
       PERMITTED_OPTIONS = %i[export_directory file_name].freeze
       DEFAULT_OPTIONS = {
         export_directory: Dir.pwd
-      }
+      }.freeze
 
       def parse_options(options)
         @options = DEFAULT_OPTIONS.merge(
@@ -74,25 +74,31 @@ module Procreate
 
         filename = "#{name}.swatches"
 
-        ext = File.extname(filename)
-        name = File.basename(filename, ext)
-        related_file_indexes = []
+        related_files = related_file_indexes(filename)
 
-        file_list = Dir[Pathname.new(File.dirname(filename)).join('*.swatches')]
-
-        file_list.select do |file|
-          if File.basename(file).include?(name) && File.extname(file) == ext
-            related_file_indexes << file.split('-').last.to_i
-          end
-        end
-
-        filename = if related_file_indexes.present?
-          name + '-' + (related_file_indexes.max + 1).to_s + ext
-        else
-          name + ext
-        end
+        filename = if related_files.present?
+                    "#{name}-#{related_files.max + 1}#{SWATCHES_EXTENSION}"
+                  else
+                    "#{name}#{SWATCHES_EXTENSION}"
+                  end
 
         @zip_path = File.join(options[:export_directory], filename)
+      end
+
+      SWATCHES_EXTENSION = '.swatches'
+
+      def related_file_indexes(file_name)
+        name = File.basename(file_name, SWATCHES_EXTENSION)
+
+        existing_swatches_files(file_name).map do |file|
+          if File.basename(file).include?(name) && File.extname(file) == SWATCHES_EXTENSION
+            file.split('-').last.to_i
+          end
+        end.compact
+      end
+
+      def existing_swatches_files(file_name)
+        Dir[Pathname.new(File.dirname(file_name)).join('*')]
       end
     end
   end

@@ -37,10 +37,11 @@ RSpec.describe Procreate::Swatches::Exporter do
 
   context 'when exporting `.swatches` file' do
     subject { described_instance.export }
-    it { expect(subject).to be_kind_of(String) }
-    it { expect(subject).to include(default_directory) }
-    it { expect(subject).to include(default_name) }
-    it { expect(subject).to match(/.*-\d{1,}\.swatches\z/) }
-    it { expect(subject).to eq(described_instance.zip_path) }
+
+    it { is_expected.to be_kind_of(String) }
+    it { is_expected.to include(default_directory) }
+    it { is_expected.to include(default_name) }
+    it { is_expected.to match(/.*-\d{1,}\.swatches\z/) }
+    it { is_expected.to eq(described_instance.zip_path) }
   end
 end

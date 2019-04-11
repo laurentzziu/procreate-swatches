@@ -10,10 +10,15 @@ module Procreate
 
       def to_swatches_json(color)
         hsv_color = color.hsv
-        hue, saturation, brightness = hsv_color.h, hsv_color.s, hsv_color.v
 
-        hue /= 360
+        hue = hsv_color.h / 360
+        saturation = hsv_color.s
+        brightness = hsv_color.v
 
+        to_color_json(hue, saturation, brightness)
+      end
+
+      def to_color_json(hue, saturation, brightness)
         {
           hue: hue,
           saturation: saturation,

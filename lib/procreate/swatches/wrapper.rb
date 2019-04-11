@@ -5,7 +5,8 @@ module Procreate
     class Wrapper
       include ColorsHelper
 
-      attr_accessor :name, :colors
+      attr_accessor :name
+      attr_writer :colors
 
       DEFAULT_SWATCHES_NAME = 'My beautiful pallete'
 
@@ -14,8 +15,6 @@ module Procreate
 
         @colors ||= []
         [*colors].each { |color| add_color(color) }
-
-        self
       end
 
       def <<(color)
@@ -26,6 +25,19 @@ module Procreate
 
       def pop
         @colors.pop
+      end
+
+      AVAILABLE_COLOR_FORMATS = %i[hsv hsl hex hex8 rgb name].freeze
+
+      def colors(format: nil)
+        format = format.to_sym unless format.nil?
+        format = nil unless format.in?(AVAILABLE_COLOR_FORMATS)
+
+        return @colors if format.nil?
+
+        @colors.map do |color|
+          color.send("to_#{format}")
+        end
       end
 
       def to_json(*_args)
@@ -46,8 +58,8 @@ module Procreate
 
       alias export to_file
 
-      def ==(object)
-        object.is_a?(self.class) && name == object.name && colors == object.colors
+      def ==(other)
+        other.is_a?(self.class) && name == other.name && colors == other.colors
       end
 
       private
