@@ -1,2 +1,8 @@
 require: rubocop-performance
 inherit_from: https://raw.githubusercontent.com/laurentzziu/utils/master/gems/.rubocop.yml
+RSpec/InstanceVariable:
+  Enabled: false
+RSpec/BeforeAfterAll:
+  Enabled: false
+RSpec/NestedGroups:
+  Enabled: false

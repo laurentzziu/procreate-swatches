@@ -15,7 +15,11 @@ RSpec.describe Procreate::Swatches::Parser do
     end
 
     context 'when providing path with invalid extension' do
-      it { expect { described_class.new(path_for_file('snowy_landscape.zip')) }.to raise_error(Procreate::Swatches::Errors::InvalidFormat) }
+      it 'raises an exception' do
+        expect do
+          described_class.new(path_for_file('snowy_landscape.zip'))
+        end.to raise_error(Procreate::Swatches::Errors::InvalidFormat)
+      end
     end
 
     context 'when providing a valid path and extension' do

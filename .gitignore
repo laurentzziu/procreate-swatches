@@ -10,6 +10,8 @@
 # rspec failure tracking
 .rspec_status
 
+.ruby-gemset
+
 .rubocop-https*
 
 .vscode

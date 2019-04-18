@@ -25,9 +25,7 @@ RSpec.configure do |config|
     dir = Dir.pwd
     all_swatches = Dir[File.join(dir, '*.swatches')]
     all_swatches.each do |file|
-      if File.exist?(file) && File.basename(file).match(/\Aspec/i).present?
-        File.delete(file)
-      end
+      File.delete(file) if File.exist?(file) && File.basename(file).match(/\Aspec/i).present?
     end
   end
 end

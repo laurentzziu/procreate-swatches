@@ -77,10 +77,10 @@ module Procreate
         related_files = related_file_indexes(filename)
 
         filename = if related_files.present?
-                    "#{name}-#{related_files.max + 1}#{SWATCHES_EXTENSION}"
-                  else
-                    "#{name}#{SWATCHES_EXTENSION}"
-                  end
+                     "#{name}-#{related_files.max + 1}#{SWATCHES_EXTENSION}"
+                   else
+                     "#{name}#{SWATCHES_EXTENSION}"
+                   end
 
         @zip_path = File.join(options[:export_directory], filename)
       end
@@ -91,9 +91,7 @@ module Procreate
         name = File.basename(file_name, SWATCHES_EXTENSION)
 
         existing_swatches_files(file_name).map do |file|
-          if File.basename(file).include?(name) && File.extname(file) == SWATCHES_EXTENSION
-            file.split('-').last.to_i
-          end
+          file.split('-').last.to_i if File.basename(file).include?(name) && File.extname(file) == SWATCHES_EXTENSION
         end.compact
       end
 

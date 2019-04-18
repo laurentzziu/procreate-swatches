@@ -47,7 +47,12 @@ RSpec.describe Procreate::Swatches::Wrapper do
     it { expect(described_instance.colors(format: :hsv)).to match(hsv_colors) }
     it { expect(described_instance.colors(format: :invalid_format)).to match(chroma_colors) }
     it { expect(described_class.new(name, hex_colors)).to eq(described_class.new(name, chroma_colors)) }
-    it { expect(described_class.new(nil, nil)).to have_attributes(name: described_class::DEFAULT_SWATCHES_NAME, colors: []) }
+    it 'has the expected attributes' do
+      expect(described_class.new(nil, nil)).to have_attributes(
+        name: described_class::DEFAULT_SWATCHES_NAME,
+        colors: []
+      )
+    end
   end
 
   context 'when generating JSON content' do
@@ -72,7 +77,13 @@ RSpec.describe Procreate::Swatches::Wrapper do
         subject(:color) { parsed_json_first_color }
 
         it { is_expected.to be_kind_of(Hash) }
-        it { is_expected.to include('hue' => hsv_test_color.h / 360, 'saturation' => hsv_test_color.s, 'brightness' => hsv_test_color.v, 'alpha' => 1, 'colorSpace' => 0) }
+        it 'has the expected attributes' do
+          expect(color).to include(
+            'hue' => hsv_test_color.h / 360,
+            'saturation' => hsv_test_color.s,
+            'brightness' => hsv_test_color.v, 'alpha' => 1, 'colorSpace' => 0
+          )
+        end
         it { expect(color['hue']).to be_between(0, 1) }
         it { expect(color['saturation']).to be_between(0, 1) }
         it { expect(color['brightness']).to be_between(0, 1) }
@@ -85,16 +96,16 @@ RSpec.describe Procreate::Swatches::Wrapper do
 
   context 'when adding a new color' do
     context 'when is valid' do
-      subject { described_instance << valid_color }
+      subject(:color_adding) { described_instance << valid_color }
 
-      it { expect { subject }.to change { described_instance.colors.size }.by(1) }
+      it { expect { color_adding }.to change { described_instance.colors.size }.by(1) }
       it { is_expected.to be_kind_of(Array) }
     end
 
     context 'when is invalid' do
-      subject { described_instance << invalid_colors.sample }
+      subject(:color_adding) { described_instance << invalid_colors.sample }
 
-      it { expect { subject }.not_to(change { described_instance.colors.size }) }
+      it { expect { color_adding }.not_to(change { described_instance.colors.size }) }
       it { is_expected.to be_kind_of(Array) }
       it { is_expected.to eq(initial_wrapper_colors) }
     end

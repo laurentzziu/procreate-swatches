@@ -45,9 +45,7 @@ module Procreate
       SWATCHES_FILE_REGEXP = /\.swatches\z/.freeze
 
       def validate!
-        unless file_path.present? && File.exist?(file_path) && File.file?(file_path)
-          raise(Errors::InvalidPath)
-        end
+        raise(Errors::InvalidPath) unless file_path.present? && File.exist?(file_path) && File.file?(file_path)
 
         raise(Errors::InvalidFormat) unless file_path.match(SWATCHES_FILE_REGEXP).present?
       end

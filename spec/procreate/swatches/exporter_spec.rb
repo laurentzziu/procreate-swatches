@@ -31,6 +31,11 @@ RSpec.describe Procreate::Swatches::Exporter do
       described_instance.options = unpremitted_options
 
       expect(described_instance.options).not_to include(**unpremitted_options)
+    end
+
+    it 'discards unpermitted options, but keeps permitted options' do
+      described_instance.options = unpremitted_options
+
       expect(described_instance.options).to include(export_directory: default_directory)
     end
   end
