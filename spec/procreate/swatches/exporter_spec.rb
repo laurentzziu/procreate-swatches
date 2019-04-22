@@ -47,6 +47,6 @@ RSpec.describe Procreate::Swatches::Exporter do
     it { is_expected.to include(default_directory) }
     it { is_expected.to include(default_name) }
     it { is_expected.to match(/.*-\d{1,}\.swatches\z/) }
-    it { is_expected.to eq(described_instance.zip_path) }
+    it { is_expected.to eq(described_instance.swatches_path) }
   end
 end

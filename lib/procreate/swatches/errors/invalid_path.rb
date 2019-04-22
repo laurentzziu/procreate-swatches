@@ -3,9 +3,12 @@
 module Procreate
   module Swatches
     module Errors
+      # Exception raised when the specified path is invalid.
       class InvalidPath < StandardError
+        MESSAGE = 'Invalid file path specified.'
+
         def message
-          'Invalid file path specified.'
+          MESSAGE
         end
       end
     end

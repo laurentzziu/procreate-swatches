@@ -3,9 +3,12 @@
 module Procreate
   module Swatches
     module Errors
+      # Exception raised when the provided file format is invalid.
       class InvalidFormat < StandardError
+        MESSAGE = 'Invalid file format specified. Accepted file format: `.swatches`.'
+
         def message
-          'Invalid file format specified. Accepted file format: `.swatches`.'
+          MESSAGE
         end
       end
     end

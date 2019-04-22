@@ -5,36 +5,65 @@ require 'zip'
 
 module Procreate
   module Swatches
+    #
+    # The class that handles the export of a {Procreate::Swatches::Wrapper} to a
+    # +.swatches+ file.
+    #
     class Exporter
       include CallableClass
 
-      attr_accessor :wrapper
-      attr_reader :zip_path
+      # @!method self.call
+      #   Creates a new instance of {Procreate::Swatches::Exporter} and calls {#call}
+      #   Dynamically included by using {https://github.com/laurentzziu/callable_class CallableClass} gem.
 
+      # An instance of {Procreate::Swatches::Wrapper}
+      attr_accessor :wrapper
+      # The computed path of the +.swatches+ file, after the file was exported.
+      attr_reader :swatches_path
+
+      #
+      # Initialize a new {Exporter}
+      #
+      # @param [Procreate::Swatches::Wrapper] wrapper Wrapper file
+      # @param [Hash] options Options for exporting the wrapper
+      # @option options [String] :export_directory ('Dir.pwd') The export directory for the +.swatches+ file
+      # @option options [String] :file_name ('Wrapper#name') Custom file name for the exported +.swatches+ file. If none is provided, the +name+ of the +wrapper+ instance is used
+      #
       def initialize(wrapper, options = {})
         @wrapper = wrapper
         parse_options(options)
       end
 
+      # Exports the +.swatches+ file.
+      #
+      # @return [String] swatches_path Path of the exported +.swatches+ file
       def call
         zip_content!
 
-        zip_path
+        swatches_path
       end
 
       alias export call
 
+      # @!attribute [r] options
+      # Export options
+      # @return [Hash] Export options
       def options
         parse_options(@options)
       end
 
+      # @!attribute [w] options
+      # Export options
+      # @return [Hash] Export options
       def options=(hash)
         parse_options(hash)
       end
 
+      # Permitted options. Any other key will be discarded.
+      PERMITTED_OPTIONS = %i[export_directory file_name].freeze
+
       private
 
-      PERMITTED_OPTIONS = %i[export_directory file_name].freeze
       DEFAULT_OPTIONS = {
         export_directory: Dir.pwd
       }.freeze
@@ -66,8 +95,6 @@ module Procreate
       # Function generates uniq file name from the String passed to it
       # based on extension and basename
       #
-      # @param [String] new_file_name desired file_name
-      #
       # @return [String] generated file name
       def generate_unique_filename
         name = options[:file_name] || wrapper.name
@@ -82,7 +109,7 @@ module Procreate
                      "#{name}#{SWATCHES_EXTENSION}"
                    end
 
-        @zip_path = File.join(options[:export_directory], filename)
+        @swatches_path = File.join(options[:export_directory], filename)
       end
 
       SWATCHES_EXTENSION = '.swatches'
