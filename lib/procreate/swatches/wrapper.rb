@@ -16,7 +16,7 @@ module Procreate
       attr_writer :colors
 
       # The default name, used in case a custom name is not provided
-      DEFAULT_SWATCHES_NAME = 'My beautiful pallete'
+      DEFAULT_SWATCHES_NAME = 'My beautiful palette'
 
       #
       # Initialize a new instance of {Procreate::Swatches::Wrapper}
@@ -56,6 +56,16 @@ module Procreate
 
       # Available formats to return the colors as. These types are supported by {https://github.com/jfairbank/chroma Chroma::Color}
       AVAILABLE_COLOR_FORMATS = %i[hsv hsl hex hex8 rgb name].freeze
+
+      #
+      # Returns the list of available color formats a color
+      # can be retrieved into.
+      #
+      # @return [Array<Symbol>] The list of available formats a color can be retrived into.
+      #
+      def available_color_formats
+        AVAILABLE_COLOR_FORMATS
+      end
 
       #
       # Attribute reader for colors.

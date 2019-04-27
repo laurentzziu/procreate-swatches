@@ -98,15 +98,16 @@ module Procreate
       # @return [String] generated file name
       def generate_unique_filename
         name = options[:file_name] || wrapper.name
+        # TODO: Sanitize the file name
 
         filename = "#{name}.swatches"
 
         related_files = related_file_indexes(filename)
 
         filename = if related_files.present?
-          "#{name}-#{related_files.max + 1}#{SWATCHES_EXTENSION}"
-        else
-          "#{name}#{SWATCHES_EXTENSION}"
+                     "#{name}-#{related_files.max + 1}#{SWATCHES_EXTENSION}"
+                   else
+                     "#{name}#{SWATCHES_EXTENSION}"
         end
 
         @swatches_path = File.join(options[:export_directory], filename)

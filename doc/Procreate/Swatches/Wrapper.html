@@ -138,7 +138,7 @@
 
 </div>
         </dt>
-        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>My beautiful pallete</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>My beautiful palette</span><span class='tstring_end'>&#39;</span></span></pre></dd>
       
         <dt id="AVAILABLE_COLOR_FORMATS-constant" class="">AVAILABLE_COLOR_FORMATS =
           <div class="docstring">
@@ -284,6 +284,30 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Wrapper file comparison.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#available_color_formats-instance_method" title="#available_color_formats (instance method)">#<strong>available_color_formats</strong>  &#x21d2; Array&lt;Symbol&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the list of available color formats a color can be retrieved into.</p>
 </div></span>
   
 </li>
@@ -582,19 +606,19 @@ no format is provided. This is the default option.</p>
       <pre class="lines">
 
 
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80</pre>
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/procreate/swatches/wrapper.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'lib/procreate/swatches/wrapper.rb', line 81</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_colors'>colors</span><span class='lparen'>(</span><span class='label'>format:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_format'>format</span> <span class='op'>=</span> <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span> <span class='kw'>unless</span> <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -835,15 +859,74 @@ no format is provided. This is the default option.</p>
       <pre class="lines">
 
 
-124
-125
-126</pre>
+134
+135
+136</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/procreate/swatches/wrapper.rb', line 124</span>
+      <pre class="code"><span class="info file"># File 'lib/procreate/swatches/wrapper.rb', line 134</span>
 
 <span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>==</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_colors'>colors</span> <span class='op'>==</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_colors'>colors</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="available_color_formats-instance_method">
+  
+    #<strong>available_color_formats</strong>  &#x21d2; <tt>Array&lt;Symbol&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the list of available color formats a color can be retrieved into.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;Symbol&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The list of available formats a color can be retrived into.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+66
+67
+68</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/procreate/swatches/wrapper.rb', line 66</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_available_color_formats'>available_color_formats</span>
+  <span class='const'><span class='object_link'><a href="#AVAILABLE_COLOR_FORMATS-constant" title="Procreate::Swatches::Wrapper::AVAILABLE_COLOR_FORMATS (constant)">AVAILABLE_COLOR_FORMATS</a></span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -979,12 +1062,12 @@ no format is provided. This is the default option.</p>
       <pre class="lines">
 
 
-109
-110
-111</pre>
+119
+120
+121</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/procreate/swatches/wrapper.rb', line 109</span>
+      <pre class="code"><span class="info file"># File 'lib/procreate/swatches/wrapper.rb', line 119</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_file'>to_file</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="Exporter.html" title="Procreate::Swatches::Exporter (class)">Exporter</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'><span class='object_link'><a href="Exporter.html#call-class_method" title="Procreate::Swatches::Exporter.call (method)">call</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -1045,17 +1128,17 @@ returned. This is a limitation of Procreate.</p>
       <pre class="lines">
 
 
-90
-91
-92
-93
-94
-95
-96
-97</pre>
+100
+101
+102
+103
+104
+105
+106
+107</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/procreate/swatches/wrapper.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/procreate/swatches/wrapper.rb', line 100</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_json'>to_json</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid__args'>_args</span><span class='rparen'>)</span>
   <span class='lbracket'>[</span>
@@ -1075,7 +1158,7 @@ returned. This is a limitation of Procreate.</p>
 </div>
 
       <div id="footer">
-  Generated on Sat Apr 27 07:47:15 2019 by
+  Generated on Sat Apr 27 09:32:32 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.16 (ruby-2.4.3).
 </div>

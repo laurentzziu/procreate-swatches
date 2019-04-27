@@ -46,6 +46,7 @@ RSpec.describe Procreate::Swatches::Wrapper do
     it { expect(described_instance.colors(format: :hsl)).to match(hsl_colors) }
     it { expect(described_instance.colors(format: :hsv)).to match(hsv_colors) }
     it { expect(described_instance.colors(format: :invalid_format)).to match(chroma_colors) }
+    it { expect(described_instance.available_color_formats).to eq(described_class::AVAILABLE_COLOR_FORMATS)}
     it { expect(described_class.new(name, hex_colors)).to eq(described_class.new(name, chroma_colors)) }
     it 'has the expected attributes' do
       expect(described_class.new(nil, nil)).to have_attributes(
