@@ -1,6 +1,7 @@
 # Procreate::Swatches
 
 [![Documentation](http://img.shields.io/badge/docs-rdoc.info-blue.svg)](https://www.rubydoc.info/gems/procreate-swatches/)
+[![Gem](https://img.shields.io/gem/v/procreate-swatches.svg?color=blue)](https://rubygems.org/gems/procreate-swatches)
 [![Build Status](https://travis-ci.org/laurentzziu/procreate-swatches.svg?branch=master)](https://travis-ci.org/laurentzziu/procreate-swatches)
 [![Maintainability](https://api.codeclimate.com/v1/badges/b82e0b6e6aade556abe0/maintainability)](https://codeclimate.com/github/laurentzziu/procreate-swatches/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/b82e0b6e6aade556abe0/test_coverage)](https://codeclimate.com/github/laurentzziu/procreate-swatches/test_coverage)
