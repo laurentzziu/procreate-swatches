@@ -24,7 +24,7 @@ module Procreate
       #
       # Initialize a new {Exporter}
       #
-      # @param [Procreate::Swatches::Wrapper] wrapper Wrapper file
+      # @param [Procreate::Swatches::Wrapper] wrapper Wrapper instance
       # @param [Hash] options Options for exporting the wrapper
       # @option options [String] :export_directory ('Dir.pwd') The export directory for the +.swatches+ file
       # @option options [String] :file_name ('Wrapper#name') Custom file name for the exported +.swatches+ file. If none is provided, the +name+ of the +wrapper+ instance is used
@@ -104,10 +104,10 @@ module Procreate
         related_files = related_file_indexes(filename)
 
         filename = if related_files.present?
-                     "#{name}-#{related_files.max + 1}#{SWATCHES_EXTENSION}"
-                   else
-                     "#{name}#{SWATCHES_EXTENSION}"
-                   end
+          "#{name}-#{related_files.max + 1}#{SWATCHES_EXTENSION}"
+        else
+          "#{name}#{SWATCHES_EXTENSION}"
+        end
 
         @swatches_path = File.join(options[:export_directory], filename)
       end

@@ -15,7 +15,11 @@ require 'procreate/swatches/wrapper'
 require 'procreate/swatches/parser'
 require 'procreate/swatches/exporter'
 
+# All things {https://procreate.art Procreate} tools.
 module Procreate
+  #
+  # Interact with +.swatches+ files ({https://procreate.art Procreate}) and manipulate them.
+  #
   module Swatches
     # Internal name of the +.swatches+ file.
     # Used for both parsing and exporting +.swatches+ files.
@@ -36,7 +40,7 @@ module Procreate
     # Export an array of colors to a +.swatches+ file, with the possibility to provide a custom palette name.
     #
     # @param [String] name Preferred name for the exported +.swatches+ file palette. Visible instance the Procreate app.
-    # @param [Array<String, Chroma::Color>] colors An array of valid color strings or {Chroma::Color} instances
+    # @param [Array<String, Chroma::Color>] colors An array of valid color strings or {https://github.com/jfairbank/chroma Chroma::Color} instances
     # @param [Hash] options Options for exporting the wrapper
     # @option options [String] :export_directory ('Dir.pwd') The export directory for the +.swatches+ file
     # @option options [String] :file_name ('Wrapper#name') Custom file name for the exported +.swatches+ file. If none is provided, the +name+ of the +wrapper+ instance is used

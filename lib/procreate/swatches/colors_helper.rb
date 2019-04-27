@@ -2,14 +2,16 @@
 
 module Procreate
   module Swatches
+    # Helper module to interact with colors
     module ColorsHelper
       # +.swatches+ files can hold a maximum of 30 colors.
       SWATCHES_MAX_SIZE = 30
+      # Procreate +.swatches+ don't consider the opacity, therefore a default value of 1 is used.
       SWATCHES_ALPHA = 1
       SWATCHES_COLOR_SPACE = 0
       SELECTED_KEYS = %w[hue saturation brightness].freeze
 
-      # Transforms the {Chroma} color be exported to the +.swatches+ file.
+      # Transforms the {https://github.com/jfairbank/chroma Chroma::Color} color be exported to the +.swatches+ file.
       #
       # @param [Chroma::Color] color Color
       #
@@ -46,11 +48,11 @@ module Procreate
       end
 
       #
-      # Generates a string formatted to initialize a {Chroma::Color} from HSV values
+      # Generates a string formatted to initialize a {https://github.com/jfairbank/chroma Chroma::Color} from HSV values
       #
       # @param [Hash{hue => Float, saturation => Float, brightness => Float}] color Color as hash (from parsed +.swatches+ file)
       #
-      # @return [String] string String formatted to initialize a {Chroma::Color} from HSV values
+      # @return [String] string String formatted to initialize a {https://github.com/jfairbank/chroma Chroma::Color} from HSV values
       #
       def to_chroma_hsv(color)
         hue, saturation, brightness = *color.values_at(*SELECTED_KEYS)
@@ -62,10 +64,10 @@ module Procreate
       #
       # Checks a "color" before adding it to a {Procreate::Swatches::Wrapper} instance's colors array.
       #
-      # @param [Chroma::Color, String] color A string or a {Chroma::Color}
+      # @param [Chroma::Color, String] color A string or a {https://github.com/jfairbank/chroma Chroma::Color}
       #
-      # @return [Chroma::Color] Return a {Chroma::Color} if the color is already an instance of {Chroma::Color}, or the string can be converted to one.
-      # @return [nil] Returns nil when {Chroma::Color} can't build a color object from the provided string
+      # @return [Chroma::Color] Return a {https://github.com/jfairbank/chroma Chroma::Color} if the color is already an instance of {https://github.com/jfairbank/chroma Chroma::Color}, or the string can be converted to one.
+      # @return [nil] Returns nil when {https://github.com/jfairbank/chroma Chroma::Color} can't build a color object from the provided string
       #
       def prepare_color_for_push(color)
         return color if color.is_a?(Chroma::Color)

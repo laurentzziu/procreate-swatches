@@ -2,6 +2,7 @@
 
 module Procreate
   module Swatches
+    # Current gem version
     VERSION = '0.1.0'
   end
 end

@@ -40,6 +40,5 @@ RSpec.describe Procreate::Swatches::Parser do
 
     it { expect(@new_instance.file_path).to be_kind_of(String) }
     it { expect(@new_instance.wrapper).to be_kind_of(Procreate::Swatches::Wrapper) }
-    it { expect(@new_instance.content).to be_kind_of(Hash) }
   end
 end
