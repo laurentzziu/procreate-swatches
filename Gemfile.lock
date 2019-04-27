@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    procreate-swatches (0.1.0)
+    procreate-swatches (0.1.1)
       callable_class (~> 0.1.1)
       chroma
       rubyzip (>= 1.0.0)
