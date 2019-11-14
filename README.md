@@ -80,15 +80,16 @@ wrapper.colors
 # => [hsv(195, 16%, 81%), hsv(288, 6%, 68%), hsv(232, 19%, 67%)]
 ```
 
-By default, each color availabe in the colors array is an instance of Chroma::Color
-By providing a format parameter to the `#colors` method, you can retrieve the colors in one of the availabe formats (supported by Chroma::Color)
+By default, each color available in the colors array is an instance of `Chroma::Color`.
+
+By providing a format parameter to the `#colors` method, you can retrieve the colors in one of the available formats (supported by `Chroma::Color`)
 ```ruby
 # converting to hex
 wrapper.colors(format: :hex)
 # => ["#aec6cf", "#aba3ad", "#8a8fab"]
 ```
 
-All the availabe formats for converting colors:
+All the available formats for converting colors:
 ```ruby
 wrapper.available_color_formats
 # => [:hsv, :hsl, :hex, :hex8, :rgb, :name]
@@ -106,7 +107,7 @@ wrapper << "#bbb"
 ```
 This will add the color to the array (if valid) and return the colors array, including the newly-added color. Note that each color is an instance of `Chroma::Color`
 
-For convenience, you can directly export a Procreate::Swatches::Wrapper instance to a `.swatches` file:
+For convenience, you can directly export a `Procreate::Swatches::Wrapper` instance to a `.swatches` file:
 ```ruby
 wrapper.export
 # => "path/to/your/palette.swatches"
