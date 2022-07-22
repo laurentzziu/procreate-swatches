@@ -75,7 +75,7 @@ GEM
       simplecov
     simplecov-html (0.10.2)
     thread_safe (0.3.6)
-    tzinfo (1.2.7)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     unicode-display_width (1.5.0)
 
